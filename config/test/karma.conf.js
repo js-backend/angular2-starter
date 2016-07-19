@@ -14,6 +14,7 @@ module.exports = function(config) {
     basePath: '../../',
 
     frameworks: ['jasmine'],
+    // Chrome, PhantomJS
     browsers: ['PhantomJS'],
     reporters: ['progress', 'coverage'],
 
@@ -46,7 +47,8 @@ module.exports = function(config) {
     port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,
-    autoWatch: true
+    autoWatch: true,
+    browserNoActivityTimeout: 90000 // Note: default value (10000) is not enough
   };
 
   configuration.preprocessors[gulpConfig.tmpApp + '**/!(*.spec)+(.js)'] = ['coverage'];
@@ -80,6 +82,7 @@ module.exports = function(config) {
     configuration.singleRun = true;
     configuration.browserNoActivityTimeout = 90000; // Note: default value (10000) is not enough
   }
+
 
   config.set(configuration);
 
